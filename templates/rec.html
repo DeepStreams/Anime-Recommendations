@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block title %}
+Recommendations for {{ anime_name }}
+{% endblock %}
+
+{% block content %}
+{% if recommendations %}
+  <div id="recommendations">
+    <h2>Recommendations for {{anime_name}}: </h2>
+    <ul>
+      {% for anime in recommendations %}
+        <li>{{ anime }}</li>
+      {% endfor %}  
+    </ul>
+  </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="static/style.css">
+    <title>{% block title %}Anime Recommendation System{% endblock %}</title>
+  </head>
+  <body>
+    
+    <div class="main-container">
+    <h1>Enter an anime you liked</h1>
+    <form action="/recommendations" method="POST">
+      <br>
+      <br>
+      <div class="container">
+      <input type="text" id="anime_name" name="anime_name" autocomplete="off" style="text-transform:capitalize">
+      <div id="anime_list"></div>
+      <br>
+      <br>
+      <button type="submit">Submit</button>
+      </div>
+     <br>
+      <br>
+    </form>
+    <br>
+    <br>
+    <div id="error_message">
+      {% if error_message %}
+        <p style="color: red">{{ error_message }}</p>
+      {% endif %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+    </div>
+
+ <script>
+      let allanimes = [];
+      let input = document.getElementById("anime_name");
+      let animeListDiv = document.getElementById("anime_list");
+      fetch("/anime_names")
+        .then(response => response.json())
+        .then(data => {
+          allanimes = data.anime_names;
+          input.addEventListener("keyup", (e) => {
+            const inputValue = e.target.value.toLowerCase();
+            if (inputValue.length === 0) {
+              animeListDiv.innerHTML = "";
+            } else {
+              const filteredAnimes = allanimes.filter(anime => anime.toLowerCase().startsWith(inputValue));
+              let animeListHTML = "";
+              for (let i = 0; i < filteredAnimes.length && i< 10; i++) {
+                animeListHTML += "<li onclick='displayNames(\"" + filteredAnimes[i] + "\")'>" + filteredAnimes[i] + "</li>";
+              }
+              animeListDiv.innerHTML = animeListHTML;
+            }
+          });
+        })
+        .catch(error => console.error(error));
+        function displayNames(value){
+          input.value = value;
+          document.getElementById('anime_list').innerHTML = '';
+        }
+    </script>
+  </body>
+</html>

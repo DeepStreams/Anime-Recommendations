@@ -1,0 +1,97 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #EEF0F7;
+}
+
+
+.main-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  margin-top: 20px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CSS for title case anime names in recommendations */
+#recommendations li {
+    text-transform: capitalize;
+  }
+  ul {
+    list-style-type: none;
+  }
+  
+
+  input {
+    position: relative;
+    border: 2px solid #DADDEC;
+    margin: auto;
+    font-size: 1rem;
+    color: #656880;
+    width: 500px;
+    height: 50px;  
+    padding-top: 5px;
+    padding-left: 5px;    
+    padding-right: 80px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+  
+
+  button {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    background-image: linear-gradient(to right, #89CAFF, #6589FF);
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 5px 20px #89caff94;
+    transition: box-shadow .3s ease-in-out;
+    display: block;
+    margin: 0 auto;
+    border: none;
+  }
+
+  #anime_list {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: calc(100%x);
+    height: auto;
+    margin-top: -1px;
+    z-index: 1;
+  }
+  
+  #anime_list li {
+    text-transform: capitalize;
+    list-style-type: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  #anime_list li:hover {
+    background-color: #f2f2f2;
+  }
+  
+  #anime_list:empty {
+    height: 0;
+    border: none;
+    box-shadow: none;
+  }
