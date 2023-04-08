@@ -68,4 +68,4 @@ def recommendations():
         return render_template("rec.html")    
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
